@@ -249,13 +249,19 @@ class UsersListView(ListAPIView):
     permission_classes = (IsAuthenticated, )
     serializer_class = UsersListSerializers
     pagination_class = PostsPagination
+
+    
     def get_queryset(self):
         search = self.request.query_params.get('search')
         if search:
             #| Q(email__icontains = search) add this after first name if email filter is also reqyured ..
+            
+            # return User.objects.all().exclude(admin=True)
             return User.objects.filter(Q(first_name__icontains = search) | Q(username__icontains = search)).distinct().exclude(id=self.request.user.id).exclude(admin=True).order_by("-created_at")
+            
         else:
             return []
+    
 
 
 class ProfileView(ListAPIView):

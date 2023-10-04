@@ -25,6 +25,6 @@ urlpatterns = [
     path('forgot_password_otp/', forgot_password_otp),
     path('reset_password/', reset_password_view),
     path('change_password/', ChangePasswordView.as_view()),
-    # path('email_login/', email_login_view), deprecated,
+    path('email_login/', email_login_view),
     path('check_username/', check_user_name)
 ]
