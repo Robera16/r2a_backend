@@ -246,7 +246,7 @@ class UserView(APIView):
         })
 
 class UsersListView(ListAPIView):
-    # permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated, )
     serializer_class = UsersListSerializers
     pagination_class = PostsPagination
     def get_queryset(self):
