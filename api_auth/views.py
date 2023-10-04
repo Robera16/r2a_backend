@@ -174,6 +174,8 @@ def email_login_view(request):
                 return Response({'detail': 'Admin Cannot login on Mobile App ', 'status': 'bad'}, status=status.HTTP_401_UNAUTHORIZED)
             else:
                 refresh = RefreshToken.for_user(user)
+                print('refersh', str(refresh))
+                print('access' ,str(refresh.access_token))
                 user.otp = ''
                 user.attempts = 0
                 user.save()
