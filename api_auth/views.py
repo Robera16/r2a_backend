@@ -211,34 +211,49 @@ class RegisterView(APIView):
     def post(self, request):
         user_data = request.data
         phone_number = request.data.get('phone_number')
-        old  = PhoneOtp.objects.filter(phone_number__iexact = phone_number)
-        if old:
-            validated = old.first().validated
-            if validated:
-                if validated:
-                    try:
-                        serializer = UserSerializer(data= user_data)
-                        if serializer.is_valid(raise_exception=True):
-                            serializer.save()
-                        return Response({"status": 'OK', "data": serializer.data})
-                    except IntegrityError:
-                        return Response({"status": 'bad', "data": "User Exists with given Email Address"}, status=status.HTTP_400_BAD_REQUEST)
-                else:
-                    return Response({
-                        "status": "bad",
-                        "message": "Validate phone number to continue registartion",
-                        "CODE": 'USER_NOT_VALIDATED'
-                    })
-            else:
-                return Response({
-                    'status': 'bad',
-                    'message': 'validate your mobile number to register'
-                })
-        else:
-            return Response({
-                    'status': 'bad',
-                    'message': 'validate your mobile number to register'
-                })
+      
+        try:
+            serializer = UserSerializer(data= user_data)
+            if serializer.is_valid(raise_exception=True):
+                    serializer.save()
+            return Response({"status": 'OK', "data": serializer.data})
+        except IntegrityError:
+            return Response({"status": 'bad', "data": "User Exists with given Email Address"}, status=status.HTTP_400_BAD_REQUEST)
+               
+         
+    
+
+    # def post(self, request):
+    #     user_data = request.data
+    #     phone_number = request.data.get('phone_number')
+    #     old  = PhoneOtp.objects.filter(phone_number__iexact = phone_number)
+    #     if old:
+    #         validated = old.first().validated
+    #         if validated:
+    #             if validated:
+    #                 try:
+    #                     serializer = UserSerializer(data= user_data)
+    #                     if serializer.is_valid(raise_exception=True):
+    #                         serializer.save()
+    #                     return Response({"status": 'OK', "data": serializer.data})
+    #                 except IntegrityError:
+    #                     return Response({"status": 'bad', "data": "User Exists with given Email Address"}, status=status.HTTP_400_BAD_REQUEST)
+    #             else:
+    #                 return Response({
+    #                     "status": "bad",
+    #                     "message": "Validate phone number to continue registartion",
+    #                     "CODE": 'USER_NOT_VALIDATED'
+    #                 })
+    #         else:
+    #             return Response({
+    #                 'status': 'bad',
+    #                 'message': 'validate your mobile number to register'
+    #             })
+    #     else:
+    #         return Response({
+    #                 'status': 'bad',
+    #                 'message': 'validate your mobile number to register'
+    #             })
 
 
 
