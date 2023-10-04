@@ -1,0 +1,509 @@
+[
+    {
+    "model": "api_auth.Country",
+    "pk": 1,
+    "fields": {
+        "name": "India"
+    }
+},
+{
+    "model": "api_auth.State",
+    "pk": 1,
+    "fields": {
+        "name": "Andhra Pradesh",
+        "country_id": 1
+    }
+},
+{
+    "model": "api_auth.State",
+    "pk": 2,
+    "fields": {
+        "name": "Arunachal Pradesh",
+        "country_id": 1
+    }
+},
+{
+    "model": "api_auth.State",
+    "pk": 3,
+    "fields": {
+        "name": "Assam",
+        "country_id": 1
+    }
+},
+{
+    "model": "api_auth.State",
+    "pk": 4,
+    "fields": {
+        "name": "Bihar",
+        "country_id": 1
+    }
+},
+{
+    "model": "api_auth.State",
+    "pk": 5,
+    "fields": {
+        "name": "Chhattisgarh",
+        "country_id": 1
+    }
+},
+
+{
+    "model": "api_auth.State",
+    "pk": 6,
+    "fields": {
+        "name": "Goa",
+        "country_id": 1
+    }
+},
+
+{
+    "model": "api_auth.State",
+    "pk": 7,
+    "fields": {
+        "name": "Gujarat",
+        "country_id": 1
+    }
+},
+
+{
+    "model": "api_auth.State",
+    "pk": 8,
+    "fields": {
+        "name": "Haryana",
+        "country_id": 1
+    }
+},
+
+{
+    "model": "api_auth.State",
+    "pk": 9,
+    "fields": {
+        "name": "Himachal Pradesh",
+        "country_id": 1
+    }
+},
+
+{
+    "model": "api_auth.State",
+    "pk": 10,
+    "fields": {
+        "name": "Jharkhand",
+        "country_id": 1
+    }
+},
+
+{
+    "model": "api_auth.State",
+    "pk": 11,
+    "fields": {
+        "name": "Karnataka",
+        "country_id": 1
+    }
+},
+
+{
+    "model": "api_auth.State",
+    "pk": 12,
+    "fields": {
+        "name": "Kerala",
+        "country_id": 1
+    }
+},
+
+{
+    "model": "api_auth.State",
+    "pk": 13,
+    "fields": {
+        "name": "Madhya Pradesh",
+        "country_id": 1
+    }
+},
+
+{
+    "model": "api_auth.State",
+    "pk": 14,
+    "fields": {
+        "name": "Maharashtra",
+        "country_id": 1
+    }
+},
+
+{
+    "model": "api_auth.State",
+    "pk": 15,
+    "fields": {
+        "name": "Manipur",
+        "country_id": 1
+    }
+},
+
+{
+    "model": "api_auth.State",
+    "pk": 16,
+    "fields": {
+        "name": "Meghalaya",
+        "country_id": 1
+    }
+},
+
+{
+    "model": "api_auth.State",
+    "pk": 17,
+    "fields": {
+        "name": "Mizoram",
+        "country_id": 1
+    }
+},
+
+{
+    "model": "api_auth.State",
+    "pk": 18,
+    "fields": {
+        "name": "Nagaland",
+        "country_id": 1
+    }
+},
+
+{
+    "model": "api_auth.State",
+    "pk": 19,
+    "fields": {
+        "name": "Odisha",
+        "country_id": 1
+    }
+},
+
+{
+    "model": "api_auth.State",
+    "pk": 20,
+    "fields": {
+        "name": "Punjab",
+        "country_id": 1
+    }
+},
+
+{
+    "model": "api_auth.State",
+    "pk": 21,
+    "fields": {
+        "name": "Rajasthan",
+        "country_id": 1
+    }
+},
+
+{
+    "model": "api_auth.State",
+    "pk": 22,
+    "fields": {
+        "name": "Sikkim",
+        "country_id": 1
+    }
+},
+
+{
+    "model": "api_auth.State",
+    "pk": 23,
+    "fields": {
+        "name": "Tamil Nadu",
+        "country_id": 1
+    }
+},
+{
+    "model": "api_auth.State",
+    "pk": 24,
+    "fields": {
+        "name": "Telangana",
+        "country_id": 1
+    }
+},
+{
+    "model": "api_auth.State",
+    "pk": 25,
+    "fields": {
+        "name": "Tripura",
+        "country_id": 1
+    }
+},
+{
+    "model": "api_auth.State",
+    "pk": 26,
+    "fields": {
+        "name": "Uttar Pradesh",
+        "country_id": 1
+    }
+},
+{
+    "model": "api_auth.State",
+    "pk": 27,
+    "fields": {
+        "name": "Uttarakhand",
+        "country_id": 1
+    }
+},
+{
+    "model": "api_auth.State",
+    "pk": 28,
+    "fields": {
+        "name": "West Bengal",
+        "country_id": 1
+    }
+},
+{
+    "model": "api_auth.District",
+    "pk": 1,
+    "fields": {
+        "name": "Warangal(Urban)",
+        "state_id": 24
+    }
+},
+{
+    "model": "api_auth.District",
+    "pk": 2,
+    "fields": {
+        "name": "Hyderabad",
+        "state_id": 24
+    }
+},
+{
+    "model": "api_auth.District",
+    "pk": 3,
+    "fields": {
+        "name": "Vizianagaram",
+        "state_id": 1
+    }
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 1,
+    "fields": {
+        "name": "Warangal(West)",
+        "district_id": 1
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 2,
+    "fields": {
+        "name": "Warangal(East)",
+        "district_id": 1
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 3,
+    "fields": {
+        "name": "Malakpet",
+        "district_id": 2
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 4,
+    "fields": {
+        "name": "Amberpet",
+        "district_id": 2
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 5,
+    "fields": {
+        "name": "Musheerabad",
+        "district_id": 2
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 6,
+    "fields": {
+        "name": "Khairatabad",
+        "district_id": 2
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 7,
+    "fields": {
+        "name": "Jubileehills",
+        "district_id": 2
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 8,
+    "fields": {
+        "name": "Sanathnagar",
+        "district_id": 2
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 9,
+    "fields": {
+        "name": "Nampally",
+        "district_id": 2
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 10,
+    "fields": {
+        "name": "Karwan",
+        "district_id": 2
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 11,
+    "fields": {
+        "name": "Goshamahal",
+        "district_id": 2
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 12,
+    "fields": {
+        "name": "Charminar",
+        "district_id": 2
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 13,
+    "fields": {
+        "name": "Chandrayangutta",
+        "district_id": 2
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 14,
+    "fields": {
+        "name": "Yukutpura",
+        "district_id": 2
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 15,
+    "fields": {
+        "name": "Bahadurpura",
+        "district_id": 2
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 16,
+    "fields": {
+        "name": "Secunderabad",
+        "district_id": 2
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 17,
+    "fields": {
+        "name": "Secunderabad(Cantonment)",
+        "district_id": 2
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 18,
+    "fields": {
+        "name": "Kurupam",
+        "district_id": 3
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 19,
+    "fields": {
+        "name": "Parvathipuram",
+        "district_id": 3
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 20,
+    "fields": {
+        "name": "Salur",
+        "district_id": 3
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 21,
+    "fields": {
+        "name": "Bobbili",
+        "district_id": 3
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 22,
+    "fields": {
+        "name": "Cheepurupalli",
+        "district_id": 3
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 23,
+    "fields": {
+        "name": "Gajapathinagaram",
+        "district_id": 3
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 24,
+    "fields": {
+        "name": "Nellimarla",
+        "district_id": 3
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 25,
+    "fields": {
+        "name": "Vizianagaram",
+        "district_id": 3
+    }
+
+},
+{
+    "model": "api_auth.Constituency",
+    "pk": 26,
+    "fields": {
+        "name": "Srungavarapukota",
+        "district_id": 3
+    }
+
+}
+]
