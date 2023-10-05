@@ -340,16 +340,16 @@ class UsersSerializers(serializers.ModelSerializer):
     
     #@FRIENSHIPHERE (DONE)
     def get_request_sent(self, obj):
-        user = obj
-        current_user = self.context['request'].user
-        if Friend.objects.can_request_send( current_user, user):
-            request_id = FriendshipRequest.objects.get(from_user = current_user, to_user = user).id
-            return {"sent_by": "me", "request_id": request_id, "can_create": False}
-        elif Friend.objects.can_request_send(user, current_user):
-            request_id = FriendshipRequest.objects.get(from_user = user, to_user = current_user).id
-            return {"sent_by": "other", "request_id": request_id, "can_create": False}
-        else:
-            return {"sent_by": None , "request_id": None, "can_create": True}
+        # user = obj
+        # current_user = self.context['request'].user
+        # if Friend.objects.can_request_send( current_user, user):
+        #     request_id = FriendshipRequest.objects.get(from_user = current_user, to_user = user).id
+        #     return {"sent_by": "me", "request_id": request_id, "can_create": False}
+        # elif Friend.objects.can_request_send(user, current_user):
+        #     request_id = FriendshipRequest.objects.get(from_user = user, to_user = current_user).id
+        #     return {"sent_by": "other", "request_id": request_id, "can_create": False}
+        # else:
+        return {"sent_by": None , "request_id": None, "can_create": True}
 
     def get_user_avatar(self, obj):
         current_user =  self.context['request'].user
