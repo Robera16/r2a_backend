@@ -18,7 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User_Model
-        exclude = ['password', 'last_login', 'otp', 'staff', 'constituency_id', 'created_at', 'updated_at']
+        exclude = ['password', 'last_login', 'otp', 'staff', 'created_at', 'updated_at']
 
 class FriendsRequestListSerializers(serializers.ModelSerializer):
     from_user = UserSerializer()
