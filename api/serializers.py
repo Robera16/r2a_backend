@@ -7,6 +7,7 @@ from api_auth.serializers import ProfileSerializers, ConstituencySerializers
 from api_auth.models import Constituency, State, Country, District
 from friendship.models import Friend, FriendshipRequest, Follow
 import json
+import re
 
 class AttachmentsSerializers(serializers.ModelSerializer):
     id = serializers.ReadOnlyField()
@@ -145,6 +146,10 @@ class PostsSerializers(serializers.ModelSerializer):
         return False
 
     def create(self, validated_data):
+        uncleaned_data = self.initial_data
+
+        print('I am creating', validated_data)
+        print('uncleanded data', uncleaned_data)
         user = self.context['request'].user
         tagged_user_ids_list = []
 
@@ -156,20 +161,28 @@ class PostsSerializers(serializers.ModelSerializer):
                 raise serializers.ValidationError("Either description or media are require")
                 
         if 'tagged_user_ids' in validated_data:
+            # print('tagged_user_ids', validated_data)
             ids = validated_data.pop('tagged_user_ids')
+
+            integer_ids = [int(num) for num in re.findall(r'\d+', str(ids))]
+
+            # print('ids', ids, "intergers", integer_ids)
             try: 
-                tagged_user_ids_list = json.loads(ids[0])
+                tagged_user_ids_list = integer_ids
             except Exception as e:
                 print("Problem while tagging users passed ")
                 print(ids)
                 print(e)
 
+        print('validated_data', validated_data)
         if 'attachments' in validated_data:
+            print('validated data', validated_data)
             attachments = validated_data.pop('attachments')
             post = Post.objects.create(**validated_data)
             for attachment in attachments:
                 Attachment.objects.create(post_id=post, **attachment)
         else:
+            print('no attachment')
             post = Post.objects.create(**validated_data)
         for user in tagged_user_ids_list:
             user_obj = User.objects.get(pk=int(user))

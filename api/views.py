@@ -24,10 +24,12 @@ class UserPosts(APIView):
 
     def post(self, request):
         self.request.POST._mutable = True
+        print("request data" , request.data)
         post = request.data
         post['user_id'] = request.user.id
         context  = {'request':request} 
         serialze = PostsSerializers(data=post, context = context)
+        # print("serialze", serialze)
         if serialze.is_valid(raise_exception=True):
             serialze.save()
         return Response({
@@ -35,6 +37,7 @@ class UserPosts(APIView):
             "message": "Post have been saved sucessfully",
             "data": serialze.data
         })
+
 
 class UploadToFirebaseStorage(APIView):
     permission_classes = (IsAuthenticated, )

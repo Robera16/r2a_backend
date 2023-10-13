@@ -52,7 +52,9 @@ class GroupView(APIView):
         })
     
     def delete(self, request, group):
+        print('inside delete')
         group = get_object_or_404(Group.objects.all(), pk=group)
+        print('group', group)
         group.delete()
         return Response(status=status.HTTP_200_OK)
 
