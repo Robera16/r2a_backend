@@ -56,10 +56,9 @@ class GroupSerializer(serializers.ModelSerializer):
         #     print("recepients_list", recepients_list)
         
         ids=self.initial_data.pop('recepient_ids')
-        recepients_list = ids
         # print('ids', ids)
-        # recepients_list = [int(num) for num in re.findall(r'\d+', str(ids))]
-        
+        recepients_list = [int(num) for num in re.findall(r'\d+', str(ids))]
+        # print("recepients_list",  recepients_list)
         for recepient in recepients_list:
             # users.append(User.objects.get(pk=recepient['id']))
             users.append(User.objects.get(pk=recepient))
