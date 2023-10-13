@@ -4,7 +4,7 @@ from .models import Group, GroupMessage
 from friends.serializers import UserSerializer
 from django.shortcuts import get_object_or_404
 from rest_framework.exceptions import APIException
-
+import re
 
 #For groups which are not multitenant get the opposite users data
 def get_recepient_user(obj, current_user):
@@ -49,10 +49,20 @@ class GroupSerializer(serializers.ModelSerializer):
         users = []
         if validate_data['multitenant'] == False and len(validate_data['recepient_ids']) != 1:
             raise  serializers.ValidationError("Single  recepient is required for a non multitenant room")
-        if 'recepient_ids' in validate_data:
-            recepients_list = validate_data.pop('recepient_ids')
-            for recepient in recepients_list:
-                users.append(User.objects.get(pk=recepient['id']))
+        
+        # print('initial data', self.initial_data)
+        # if 'recepient_ids' in validate_data:
+        #     recepients_list = validate_data.pop('recepient_ids')
+        #     print("recepients_list", recepients_list)
+        
+        ids=self.initial_data.pop('recepient_ids')
+    
+        recepients_list = [int(num) for num in re.findall(r'\d+', str(ids))]
+        print('heereeee')
+        print("recepients_list",  recepients_list)
+        for recepient in recepients_list:
+            # users.append(User.objects.get(pk=recepient['id']))
+            users.append(User.objects.get(pk=recepient))
         group = Group.objects.create(**validate_data)
         users.append(self.context['request'].user)
         group.recepients.set(users)
