@@ -24,7 +24,7 @@ class UserPosts(APIView):
 
     def post(self, request):
         self.request.POST._mutable = True
-        print("request data" , request.data)
+        # print("request data" , request.data)
         post = request.data
         post['user_id'] = request.user.id
         context  = {'request':request} 

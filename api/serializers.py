@@ -146,10 +146,8 @@ class PostsSerializers(serializers.ModelSerializer):
         return False
 
     def create(self, validated_data):
-        uncleaned_data = self.initial_data
-
-        print('I am creating', validated_data)
-        print('uncleanded data', uncleaned_data)
+        # uncleaned_data = self.initial_data
+        # print('uncleanded data', uncleaned_data)
         user = self.context['request'].user
         tagged_user_ids_list = []
 
@@ -166,7 +164,6 @@ class PostsSerializers(serializers.ModelSerializer):
 
             integer_ids = [int(num) for num in re.findall(r'\d+', str(ids))]
 
-            # print('ids', ids, "intergers", integer_ids)
             try: 
                 tagged_user_ids_list = integer_ids
             except Exception as e:
@@ -174,7 +171,7 @@ class PostsSerializers(serializers.ModelSerializer):
                 print(ids)
                 print(e)
 
-        print('validated_data', validated_data)
+       
         if 'attachments' in validated_data:
             print('validated data', validated_data)
             attachments = validated_data.pop('attachments')
@@ -227,17 +224,18 @@ class PostsSerializers(serializers.ModelSerializer):
     
     #TODO: remove this as well we only will post category 4 posts (news fees) 1, 2 can be removed later
     def validate_data(self, data):
-        if(data['category'] == 2 and data.get('district') == None):
-            return False
-        elif (data['category'] == 1 and self.context['request'].user.constituency_id == None):
-            return False
-        else:
-            return True
+        # if(data['category'] == 2 and data.get('district') == None):
+        #     return False
+        # elif (data['category'] == 1 and self.context['request'].user.constituency_id == None):
+        #     return False
+        # else:
+        return True
 
     # TODO: we can remove this validation alltogether
     def validate(self, data):
         if not self.validate_data(data):
-            raise serializers.ValidationError("District or constituency are mandatory for post creation")
+            pass
+            # raise serializers.ValidationError("District or constituency are mandatory for post creation")
         return data
     class Meta:
         model = Post
