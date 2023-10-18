@@ -19,7 +19,9 @@ class NotificationListView(ListAPIView):
 class UnSeenNotificationsCount(APIView):
     permission_classes = (IsAuthenticated, )
     def get(self, request):
-        return Response(Notification.objects.filter(user=self.request.user, seen=False).count())
+        count = Notification.objects.filter(user=self.request.user, seen=False).count()
+        data = {"count": count}
+        return Response(data)
 
 class MarkAllSeen(APIView):
     permission_classes = (IsAuthenticated, )
