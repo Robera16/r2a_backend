@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     'stories',
     'notifications',
     'events',
+    'calls',
+    'django_twilio'
 ]
 
 AUTH_USER_MODEL = 'api_auth.User'
@@ -215,6 +217,18 @@ SIMPLE_JWT = {
 #     },
 # }
 
+ASGI_APPLICATION = 'r2a_backend.asgi.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("localhost", 6379)],  # Modify this to match your Redis server configuration.
+        },
+    },
+}
+
+
 
 #--------------------------------------#
 #         celery Layer
@@ -251,3 +265,12 @@ EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+#-----------------------------------------#
+#            Video & Audio Calls
+#------------------------------------------#
+TWILIO_ACCOUNT_SID = os.environ['TWILIO_ACCOUNT_SID']
+TWILIO_AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
+TWILIO_API_SECRET = os.environ['TWILIO_API_SECRET']

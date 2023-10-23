@@ -31,6 +31,7 @@ urlpatterns = [
     path('api/followers/', include('followers.urls')),
     path('api/notifications/', include('notifications.urls')),
     path('api/events/', include('events.urls')),
+    path('api/call/,', include('calls.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

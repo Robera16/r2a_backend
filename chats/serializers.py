@@ -56,7 +56,7 @@ class GroupSerializer(serializers.ModelSerializer):
         #     print("recepients_list", recepients_list)
         
         ids=self.initial_data.pop('recepient_ids')
-        print('idssssssssssssssssssss', ids)
+        # print('idssssssssssssssssssss', ids)
         recepients_list = [int(num) for num in re.findall(r'\d+', str(ids))]
         # print("recepients_list",  recepients_list)
         for recepient in recepients_list:

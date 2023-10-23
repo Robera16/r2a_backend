@@ -48,3 +48,11 @@ class Notification(models.Model):
     def clean(self):
         if self.notification_type == 2 and not self.tagged_post:
             raise ValidationError("Follower Post id is mandatory for \"Tag\" notification type")
+
+
+
+
+class Call(models.Model):
+    caller = models.ForeignKey(User, on_delete=models.CASCADE, related_name='calls_made')
+    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='calls_received')
+    timestamp = models.DateTimeField(auto_now_add=True)
