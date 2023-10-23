@@ -60,7 +60,6 @@ INSTALLED_APPS = [
     'notifications',
     'events',
     'calls',
-    'django_twilio'
 ]
 
 AUTH_USER_MODEL = 'api_auth.User'
