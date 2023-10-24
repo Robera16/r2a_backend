@@ -44,13 +44,14 @@ from django.conf import settings
 from twilio.rest import Client
 
 from twilio.jwt.access_token import AccessToken
-from twilio.jwt.access_token.grants import VideoGrant
+from twilio.jwt.access_token.grants import VideoGrant, VoiceGrant
 
 # Twilio setup
 TWILIO_ACCOUNT_SID = settings.TWILIO_ACCOUNT_SID
 TWILIO_AUTH_TOKEN = settings.TWILIO_AUTH_TOKEN
+TWILIO_API_KEY = settings.TWILIO_API_KEY
 TWILIO_API_SECRET= settings.TWILIO_API_SECRET
-
+TWILIO_OUTGOING_SID = settings.TWILIO_OUTGOING_SID
 # client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
 @api_view(['GET'])
@@ -64,4 +65,24 @@ def make_call(request):
     video_grant = VideoGrant(room='default')
     token.add_grant(video_grant)
 
+    return Response({'token': token.to_jwt()})
+
+
+
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated,])
+def make_audio_call(request):
+    user = request.user
+
+    # Generate a Twilio token with VideoGrant
+    token = AccessToken(TWILIO_ACCOUNT_SID, TWILIO_API_KEY, TWILIO_API_SECRET, identity=user.username)
+ 
+    # Create a Voice grant and add to token
+    voice_grant = VoiceGrant(
+        outgoing_application_sid=TWILIO_OUTGOING_SID,
+        incoming_allow=True, # Optional: add to allow incoming calls
+    )
+    token.add_grant(voice_grant)
     return Response({'token': token.to_jwt()})
