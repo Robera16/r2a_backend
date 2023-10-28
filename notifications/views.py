@@ -60,8 +60,8 @@ def make_call(request):
     user = request.user
 
     # Generate a Twilio token with VideoGrant
-    token = AccessToken(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_API_SECRET)
-    token.identity = user.username
+    token = AccessToken(TWILIO_ACCOUNT_SID, TWILIO_API_KEY, TWILIO_API_SECRET, identity=user.username)
+    
     video_grant = VideoGrant(room='default')
     token.add_grant(video_grant)
 
@@ -76,7 +76,7 @@ def make_call(request):
 def make_audio_call(request):
     user = request.user
 
-    # Generate a Twilio token with VideoGrant
+    # Generate a Twilio token with VoiceGrant
     token = AccessToken(TWILIO_ACCOUNT_SID, TWILIO_API_KEY, TWILIO_API_SECRET, identity=user.username)
  
     # Create a Voice grant and add to token
