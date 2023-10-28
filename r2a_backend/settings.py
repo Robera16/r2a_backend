@@ -39,6 +39,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -78,6 +79,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -104,6 +106,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'r2a_backend.wsgi.application'
 
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
