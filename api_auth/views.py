@@ -36,11 +36,16 @@ def get_otp(phone_number, email, country):
     
     totp = pyotp.TOTP('base32secret3232')
     key = totp.now()
+    
     text = "Hello , \n Your OTP from Infliq is {otp}".format(otp=key)
+    
     if country.name.lower() == 'india':    
         url = 'http://login.adwingssolutions.com/api/v1/sendSMS.php?APIKey={api_key}&senderid={sender_id}&flashsms=0&number={phone_number}&text={text}'.format(api_key=os.environ['SMS_API_KEY'], sender_id=os.environ['SMS_SENDER_ID'], phone_number=phone_number,text=text)
+        
         try:
+            
             response = requests.get(url)
+            print('response is', response)
             if response.status_code == 200: 
                 return key
             else:
@@ -427,17 +432,19 @@ class DistrictConstituencyView(ListAPIView):
 
 @api_view(['POST'])
 def forgot_password_otp(request):
-    print("here")
     phone_number = request.data.get('phone_number')
     user = User.objects.filter(phone_number__iexact = phone_number)
     if user.exists():
         user = user.first()
         if user.attempts < 5:
+            # print('pone', phone_number, 'user', user.email, 'country', user.country)
             # key = get_otp(phone_number, user.email, user.country)
+            # print('key is', key)
             otp='123456'
-
-            if key:
-                user.otp = key
+            # if key:
+            if otp:    
+                # user.otp = key
+                user.otp=otp
                 user.attempts += 1
                 user.save()
                 return Response({
