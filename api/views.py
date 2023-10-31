@@ -263,7 +263,7 @@ class UsersListView(ListAPIView):
             return User.objects.filter(Q(first_name__icontains = search) | Q(username__icontains = search)).distinct().exclude(id=self.request.user.id).exclude(admin=True).order_by("-created_at")
             
         else:
-            return []
+            return User.objects.all().exclude(admin=True)
     
 
 
