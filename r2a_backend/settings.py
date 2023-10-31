@@ -106,9 +106,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'r2a_backend.wsgi.application'
 
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -280,3 +277,10 @@ TWILIO_AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
 TWILIO_API_KEY = os.environ['TWILIO_API_KEY']
 TWILIO_API_SECRET = os.environ['TWILIO_API_SECRET']
 TWILIO_OUTGOING_SID = os.environ['TWILIO_OUTGOING_SID']
+
+
+#-----------------------------------------#
+#            CORS Permission
+#------------------------------------------#
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
