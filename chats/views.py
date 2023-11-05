@@ -30,6 +30,7 @@ class GroupView(APIView):
         return Response(serialize.data)
     
     def post(self, request):
+        request.data._mutable = True
         data = request.data
         data['creator'] = request.user.id
         context  = {'request':request}
@@ -40,6 +41,7 @@ class GroupView(APIView):
         return Response("Some thing went wrong please try again", status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, group):
+        request.data._mutable = True
         saved_post = get_object_or_404(Group.objects.all(), pk=group)
         data = request.data
         data['creator'] = request.user.id
@@ -52,9 +54,7 @@ class GroupView(APIView):
         })
     
     def delete(self, request, group):
-        print('inside delete')
         group = get_object_or_404(Group.objects.all(), pk=group)
-        print('group', group)
         group.delete()
         return Response(status=status.HTTP_200_OK)
 
