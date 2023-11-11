@@ -146,8 +146,8 @@ class PostsSerializers(serializers.ModelSerializer):
         return False
 
     def create(self, validated_data):
-        # uncleaned_data = self.initial_data
-        # print('uncleanded data', uncleaned_data)
+        uncleaned_data = self.initial_data
+    
         user = self.context['request'].user
         tagged_user_ids_list = []
 
@@ -172,12 +172,19 @@ class PostsSerializers(serializers.ModelSerializer):
                 print(e)
 
        
-        if 'attachments' in validated_data:
-            print('validated data', validated_data)
-            attachments = validated_data.pop('attachments')
+        # if 'attachments' in validated_data:
+        #     print('validated data', validated_data)
+        #     attachments = validated_data.pop('attachments')
+        #     post = Post.objects.create(**validated_data)
+        #     for attachment in attachments:
+        #         Attachment.objects.create(post_id=post, **attachment)
+        if 'attachments' in uncleaned_data:
+            attachments = uncleaned_data.pop('attachments')
+            file_types =  uncleaned_data.pop('file_type')
             post = Post.objects.create(**validated_data)
-            for attachment in attachments:
-                Attachment.objects.create(post_id=post, **attachment)
+            for attachment, file_type in zip(attachments, file_types):
+                attach = Attachment(post_id=post, attachment=attachment, file_type=file_type)
+                attach.save()
         else:
             print('no attachment')
             post = Post.objects.create(**validated_data)

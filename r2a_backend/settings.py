@@ -77,13 +77,15 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
 
 ROOT_URLCONF = 'r2a_backend.urls'
 
@@ -277,7 +279,6 @@ TWILIO_AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
 TWILIO_API_KEY = os.environ['TWILIO_API_KEY']
 TWILIO_API_SECRET = os.environ['TWILIO_API_SECRET']
 TWILIO_OUTGOING_SID = os.environ['TWILIO_OUTGOING_SID']
-
 
 #-----------------------------------------#
 #            CORS Permission
