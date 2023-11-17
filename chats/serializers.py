@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from api_auth.models import User
-from .models import Group, GroupMessage
+from .models import Group, GroupMessage, OneToOneChat
 from friends.serializers import UserSerializer
 from django.shortcuts import get_object_or_404
 from rest_framework.exceptions import APIException
@@ -96,4 +96,10 @@ class GroupMessageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = GroupMessage
+        fields = '__all__'
+
+
+class OneToOneChatSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OneToOneChat
         fields = '__all__'

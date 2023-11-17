@@ -39,6 +39,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -203,33 +204,33 @@ SIMPLE_JWT = {
 #         ASGI CONFIG for WebSockets 
 #--------------------------------------#
 
-# ASGI_APPLICATION = 'r2a_backend.routing.application'
+ASGI_APPLICATION = 'r2a_backend.asgi.application'
 
 #--------------------------------------#
 #         Channels Layer
 #--------------------------------------#
 
-# redis_host = os.environ['REDIS_HOST']
-
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [(redis_host, 6379)],
-#         },
-#     },
-# }
-
-ASGI_APPLICATION = 'r2a_backend.asgi.application'
+# redis_host = os.environ['CELERY_REDIS_HOST']
 
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("localhost", 6379)],  # Modify this to match your Redis server configuration.
+            "hosts": [("localhost", 6379)],
         },
     },
 }
+
+# ASGI_APPLICATION = 'r2a_backend.asgi.application'
+
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels_redis.core.RedisChannelLayer",
+#         "CONFIG": {
+#             "hosts": [("localhost", 6379)],  # Modify this to match your Redis server configuration.
+#         },
+#     },
+# }
 
 
 
