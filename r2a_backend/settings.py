@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'notifications',
     'events',
     'calls',
+    'reels'
 ]
 
 AUTH_USER_MODEL = 'api_auth.User'
